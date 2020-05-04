@@ -1,0 +1,18 @@
+# Based on https://towardsdatascience.com/converting-a-simple-deep-learning-model-from-pytorch-to-tensorflow-b6b353351f5d
+
+# install onnx
+sudo pip install onnx
+
+# install onnx-tf
+git clone https://github.com/sugartom/onnx-tensorflow.git
+cd onnx-tensorflow
+git checkout tf-1.x
+sudo pip install -e .
+
+# train model in pytorch, convert to onnx, then convert to tf
+python train_pytorch_model.py
+python convert_pytorch_to_onnx.py
+python convert_onnx_to_tensorflow.py
+python run_tf.py
+
+# ignore warnings in convert_onnx_to_tensorflow.py...
